@@ -43,24 +43,19 @@ function buscaBarbaPorId(id) {
 function verificaStatusBarbearia() {
     let verificarStatus = barbearia.estaAberto;
 
-    for (let i = 0; i < verificarStatus; i++) {
-        if (verificarStatus === true) {
+    if (verificarStatus === true) {
             return 'Estamos abertos'
         }
+        return 'Estamos fechados'
     }
-
-    return 'Estamos fechados'
-}
 
 function retornaTodosCortes() {
     return barbearia.cortes
 }
 
-
 function retornaTodasBarbas() {
     return barbearia.barbas
 }
-
 
 function criaPedido(nomeCliente, idCorte, idBarba) {
 
