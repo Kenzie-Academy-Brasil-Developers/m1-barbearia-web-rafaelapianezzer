@@ -25,7 +25,6 @@ function buscaCortePorId(id) {
             return buscaCorte[i];
         }
     }
-
     return 'Corte não encontrado.';
 }
 
@@ -38,9 +37,7 @@ function buscaBarbaPorId(id) {
             return buscaBarba[i];
         }
     }
-
     return 'Barba não encontrando.'
-
 }
 
 function verificaStatusBarbearia() {
@@ -53,7 +50,6 @@ function verificaStatusBarbearia() {
     }
 
     return 'Estamos fechados'
-
 }
 
 function retornaTodosCortes() {
@@ -65,46 +61,21 @@ function retornaTodasBarbas() {
     return barbearia.barbas
 }
 
-function criaPedido(nomeCliente, corteId, barbaId) {
 
-    function buscaCortePorId(id) {
-        let buscaCorte = barbearia.cortes;
+function criaPedido(nomeCliente, idCorte, idBarba) {
 
-        for (let i = 0; i < buscaCorte.length; i++) {
-            if (buscaCorte[i].id === id) {
-                return buscaCorte[i];
-            }
-        }
-
-        return 'Corte não encontrado.'
-    }
-
-    function buscaBarbaPorId(id) {
-        let buscaBarba = barbearia.barbas;
-
-        for (let i = 0; i < buscaBarba.length; i++) {
-            if (buscaBarba[i].id === id) {
-                return buscaBarba[i];
-            }
-        }
-
-        return "Barba não encontrada."
-    }
-
-    let resultadoCorte = buscaCortePorId(corteId);
-    let resultadoBarba = buscaBarbaPorId(barbaId);
+    let funBarba = buscaBarbaPorId(idCorte);
+    let funCorte = buscaCortePorId(idBarba);
 
     const pedido = {
         nome: nomeCliente,
-        pedidoCorte: resultadoCorte.tipo,
-        pedidoCortePreco: resultadoCorte.valor,
-        pedidoBarba: resultadoBarba.tipo,
-        pedidoBarbaPreco: resultadoBarba.valor,
-    }
-
-    return pedido;
+        pedidoCorte: idCorte,
+        pedidoBarba: idBarba,
+        pedidoCortePreco: barbearia.cortes[idCorte].valor,
+        pedidoBarbaPreco: barbearia.barbas[idBarba].valor,
+    };
+    return pedido
 }
-
 
 function atualizarServico(lista, id, valor, tipo) {
     for (let i = 0; i < lista.length; i++) {
@@ -114,8 +85,6 @@ function atualizarServico(lista, id, valor, tipo) {
             return lista;
         }
     }
-
-
 }
 
 function calculaTotal(pedido) {
